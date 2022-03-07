@@ -8,23 +8,23 @@
 // You can generate them here: https://github.com/settings/tokens
 package main
 
+// 可以用
 import (
 	"context"
 	"fmt"
-	"log"
-	"syscall"
-
 	"github.com/google/go-github/v43/github"
-	"golang.org/x/crypto/ssh/terminal"
 	"golang.org/x/oauth2"
+	"log"
+	"os"
 )
 
 func main() {
-	fmt.Print("GitHub Token: ")
-	byteToken, _ := terminal.ReadPassword(int(syscall.Stdin))
-	println()
-	token := string(byteToken)
-
+	//fmt.Print("GitHub Token: ")
+	//byteToken, _ := terminal.ReadPassword(int(syscall.Stdin))
+	//println()
+	//token := string(byteToken)
+	token := os.Getenv("GITHUB_AUTH_TOKEN")
+	fmt.Println(token)
 	ctx := context.Background()
 	ts := oauth2.StaticTokenSource(
 		&oauth2.Token{AccessToken: token},

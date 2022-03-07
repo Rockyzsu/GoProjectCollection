@@ -5,30 +5,37 @@
 
 // Package demo provides an app that shows how to use the github package on
 // Google App Engine.
-package demo
+package appengine
+
+// 无法正常使用
 
 import (
+	"bytes"
+	"context"
 	"fmt"
 	"net/http"
 	"os"
 
 	"github.com/google/go-github/v43/github"
 	"golang.org/x/oauth2"
-	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
 )
 
 func init() {
-	http.HandleFunc("/", handler)
+	fmt.Println("init")
+	http.HandleFunc("/git", handler)
+	http.HandleFunc("/", handler2)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.NotFound(w, r)
-		return
-	}
+	//if r.URL.Path != "/" {
+	//	http.NotFound(w, r)
+	//	return
+	//}
+	fmt.Println("index")
+	//ctx := appengine.NewContext(r)
+	ctx := context.Background()
 
-	ctx := appengine.NewContext(r)
 	ts := oauth2.StaticTokenSource(
 		&oauth2.Token{AccessToken: os.Getenv("GITHUB_AUTH_TOKEN")},
 	)
@@ -46,4 +53,17 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	for _, commit := range commits {
 		fmt.Fprintln(w, commit.GetHTMLURL())
 	}
+}
+func handler2(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		http.NotFound(w, r)
+		return
+	}
+	fmt.Println("index")
+
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	buff := bytes.Buffer{}
+	buff.Write([]byte("Hello world"))
+	fmt.Fprintln(w, buff.String())
+
 }

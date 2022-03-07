@@ -34,6 +34,13 @@ func main() {
 	}
 
 	for _, topic := range topics.Topics {
-		fmt.Println(*topic.Name)
+		fmt.Printf("%v", *topic)
+		fmt.Println()
+		if topic.ShortDescription != nil {
+			fmt.Println(*topic.ShortDescription)
+		}
+		if topic.Description != nil {
+			fmt.Println(*topic.Description)
+		}
 	}
 }

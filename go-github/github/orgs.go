@@ -18,7 +18,7 @@ import (
 type OrganizationsService service
 
 // Organization represents a GitHub organization account.
-type Organization struct {
+type Organization struct { // json字段
 	Login                       *string    `json:"login,omitempty"`
 	ID                          *int64     `json:"id,omitempty"`
 	NodeID                      *string    `json:"node_id,omitempty"`
@@ -164,7 +164,7 @@ func (s *OrganizationsService) List(ctx context.Context, user string, opts *List
 	} else {
 		u = "user/orgs"
 	}
-	u, err := addOptions(u, opts)
+	u, err := addOptions(u, opts) // users/Germey/orgs
 	if err != nil {
 		return nil, nil, err
 	}
@@ -174,8 +174,8 @@ func (s *OrganizationsService) List(ctx context.Context, user string, opts *List
 		return nil, nil, err
 	}
 
-	var orgs []*Organization
-	resp, err := s.client.Do(ctx, req, &orgs)
+	var orgs []*Organization                  //
+	resp, err := s.client.Do(ctx, req, &orgs) // 数据写入到orgs
 	if err != nil {
 		return nil, resp, err
 	}

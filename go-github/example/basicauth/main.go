@@ -18,13 +18,14 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"github.com/google/go-github/v43/github"
+	"golang.org/x/crypto/ssh/terminal"
 	"os"
 	"strings"
 	"syscall"
-
-	"github.com/google/go-github/v43/github"
-	"golang.org/x/crypto/ssh/terminal"
 )
+
+// 无法获取，可能已经实效
 
 func main() {
 	r := bufio.NewReader(os.Stdin)
