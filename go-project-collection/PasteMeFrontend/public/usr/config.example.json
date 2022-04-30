@@ -1,0 +1,16 @@
+{
+  "api": {
+    "backend": "/api/v3/",
+    "admin": ""
+  },
+  "footer": [
+    {
+      "url": "http://blog.lucien.ink/go/csdn",
+      "text": "CSDN"
+    },
+    {
+      "url": "https://github.com/LucienShui",
+      "text": "GitHub"
+    }
+  ]
+}

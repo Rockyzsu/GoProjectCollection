@@ -1,0 +1,5 @@
+{"level":"info","ts":1647260294.8876355,"caller":"logging/meta.go:10","msg":"PasteMe Go Backend","version":"3.5.2"}
+{"level":"info","ts":1647260294.9636676,"caller":"dao/dao.go:57","msg":"mysql connected"}
+{"level":"warn","ts":1647260295.0014777,"caller":"dao/dao.go:83","msg":"Table not found, start creating","table_name":"user"}
+{"level":"warn","ts":1647260295.068884,"caller":"dao/dao.go:83","msg":"Table not found, start creating","table_name":"permanent"}
+{"level":"warn","ts":1647260295.1399264,"caller":"dao/dao.go:83","msg":"Table not found, start creating","table_name":"temporary"}
